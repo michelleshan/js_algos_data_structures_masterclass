@@ -1,4 +1,5 @@
 //Implement a function called countUniqueValues, which accepts a sorted array, and counts the unique values in the array. There can be negative numbers in the array, but it will always be sorted.
+
 function countUniqueValues(arr) {
     //create object to return
     //loop through array
@@ -19,3 +20,12 @@ function countUniqueValues(arr) {
 }
 
 console.log(countUniqueValues([]));
+
+function countUniqueValues(arr) {
+    let newArr = arr.filter((ele, idx) => {
+		return arr.indexOf(ele) == idx;
+})
+    console.log(newArr);
+    return newArr.length;
+}
+console.log(countUniqueValues([-2, 0, 3, 3, 3, 5]))

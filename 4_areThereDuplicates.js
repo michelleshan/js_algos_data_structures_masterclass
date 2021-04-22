@@ -27,35 +27,51 @@ function areThereDuplicates(...args) {
 console.log(areThereDuplicates(1, 2, 2));
 
 
-function areThereDuplicates2() {
-    let collection = {}
-    for (let val in arguments) {
-        collection[arguments[val]] = (collection[arguments[val]])
-    }
-    for (let key in collection) {
-        if (collection[key] > 1) return true;
-    }
-    return false;
-}
-console.log(areThereDuplicates2(1, 2, 2));
+// function areThereDuplicates2() {
+//     let collection = {}
+//     for (let val in arguments) {
+//         collection[arguments[val]] = (collection[arguments[val]])
+//     }
+//     for (let key in collection) {
+//         if (collection[key] > 1) return true;
+//     }
+//     return false;
+// }
+// console.log(areThereDuplicates2(1, 2, 2));
 
-function areThereDuplicates3(...args) {
-    // Two pointers
-    args.sort((a,b) => a > b);
-    let start = 0;
-    let next = 1;
-    while(next < args.length){
-        if(args[start] === args[next]){
-            return true
-        }
-        start++
-        next++
-    }
-    return false
-}
-console.log(areThereDuplicates3(1, 2, 2));
+// function areThereDuplicates3(...args) {
+//     // Two pointers
+//     args.sort((a,b) => a > b);
+//     let start = 0;
+//     let next = 1;
+//     while(next < args.length){
+//         if(args[start] === args[next]){
+//             return true
+//         }
+//         start++
+//         next++
+//     }
+//     return false
+// }
+// console.log(areThereDuplicates3(1, 2, 2));
 
-function areThereDuplicates4() {
-    return new Set(arguments).size !== arguments.length;
+// function areThereDuplicates4() {
+//     return new Set(arguments).size !== arguments.length;
+// }
+
+//Matt's version
+function areThereDuplicates(...args) {
+	let hash = { };
+
+	args.forEach(ele => {
+		if (hash[ele]) {
+			return true;
+		} else {
+			hash[ele] = true;
+		}
+            })
+
+	return false;
 }
-console.log(areThereDuplicates4('a', 'b', 'c', 'b'));
+console.log(areThereDuplicates('a', 'b', 'c', 'a'))
+
